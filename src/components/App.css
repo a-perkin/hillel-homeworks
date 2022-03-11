@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+
+h2 {
+  color: rgb(73, 179, 11);
+}
+
+.content {
+  box-sizing: border-box;
+  min-width: 360px;
+  max-width: 960px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}

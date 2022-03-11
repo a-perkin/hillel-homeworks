@@ -1,0 +1,9 @@
+.Main {
+    background-color: aliceblue;
+    min-height: 100vh;
+    margin-top: 64px;
+}
+
+.body {
+    padding-top: 50px;
+}
