@@ -21,14 +21,13 @@ class TodoList extends React.Component {
   render() {
     const { list } = this.state;
     return (
-      <div>        
+      <div>
         <ul className="list">
           <p>
             {list.map((task, i) => (
               <TodoItem
                 key={task.id}
                 TaskID={task.id}
-                index={i}
                 Title={task.title}
                 Complited={task.completed}
                 _handleRemove={this.removeTask}

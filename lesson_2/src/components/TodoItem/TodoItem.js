@@ -4,7 +4,6 @@ import "./TodoItem.css";
 class TodoItem extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
   }
 
   _handleRemove(id) {
@@ -12,17 +11,11 @@ class TodoItem extends React.Component {
   }
 
   render() {
-    console.log(this.props);
+    const { TaskID, Title, Complited } = this.props;
     return (
-      <li
-        className={
-          (this.props.Complited ? "complited" : "notComplited") + " " + "item"
-        }
-      >
-        <span>{this.props.Title}</span>
-        <button onClick={this._handleRemove.bind(this, this.props.TaskID)}>
-          remove
-        </button>
+      <li className={(Complited ? "complited" : "notComplited") + " " + "item"}>
+        <span>{Title}</span>
+        <button onClick={this._handleRemove.bind(this, TaskID)}>remove</button>
       </li>
     );
   }
