@@ -1,0 +1,15 @@
+.complited {
+  background-color: aquamarine;
+}
+
+.notComplited {
+  background-color: coral;
+}
+
+.item {
+  display: flex;
+}
+
+.item button {
+  margin-left: auto;
+}
