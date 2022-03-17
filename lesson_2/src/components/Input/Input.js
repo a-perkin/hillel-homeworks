@@ -22,14 +22,15 @@ class Input extends React.Component {
   }
 
   render() {
+    const { inputValue } = this.state;
     return (
       <div>
         <input
           type="text"
-          value={this.state.value}
+          value={inputValue}
           onChange={this.handleChange}
         ></input>
-        <button onClick={this.addTask.bind(this, this.state.inputValue)}>
+        <button onClick={this.addTask.bind(this, inputValue)}>
           add
         </button>
       </div>

@@ -20,12 +20,13 @@ class App extends React.Component {
   }
 
   render() {
+    const { tempTask } = this.state;
     return (
       <>
         <h1>Добавить задание:</h1>
         <Input addTask={this.transitTask}></Input>
         <h1>Список заданий:</h1>
-        <TodoList task={this.state.tempTask}></TodoList>
+        <TodoList task={tempTask}></TodoList>
       </>
     );
   }
