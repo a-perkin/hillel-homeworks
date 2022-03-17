@@ -20,20 +20,20 @@ class TodoList extends React.Component {
 
   render() {
     const { list } = this.state;
+    const { task } = this.props;
     return (
       <div>
+        <span>New task: {task}</span>
         <ul className="list">
-          <p>
-            {list.map((task, i) => (
-              <TodoItem
-                key={task.id}
-                TaskID={task.id}
-                Title={task.title}
-                Complited={task.completed}
-                _handleRemove={this.removeTask}
-              />
-            ))}
-          </p>
+          {list.map((task, i) => (
+            <TodoItem
+              key={task.id}
+              taskId={task.id}
+              title={task.title}
+              completed={task.completed}
+              handleRemove={this.removeTask}
+            />
+          ))}
         </ul>
       </div>
     );

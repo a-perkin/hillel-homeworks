@@ -1,13 +1,34 @@
 import "./App.css";
-import TodoList from "./components/TodoList/TodoList";
+import TodoList from "./components/TodoList/TodoList.js";
+import Input from "./components/Input/Input.js";
+import React from "react";
 
-function App() {
-  return (
-    <>
-      <h1>Список заданий:</h1>
-      <TodoList></TodoList>
-    </>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      tempTask: "",
+    };
+
+    this.transitTask = this.transitTask.bind(this);
+  }
+
+  transitTask(task) {
+    this.setState({
+      tempTask: task,
+    });
+  }
+
+  render() {
+    return (
+      <>
+        <h1>Добавить задание:</h1>
+        <Input addTask={this.transitTask}></Input>
+        <h1>Список заданий:</h1>
+        <TodoList task={this.state.tempTask}></TodoList>
+      </>
+    );
+  }
 }
 
 export default App;
