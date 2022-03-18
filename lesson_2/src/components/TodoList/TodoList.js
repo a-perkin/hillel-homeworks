@@ -1,4 +1,3 @@
-import todo from "../../resource/todo.js";
 import TodoItem from "../TodoItem/TodoItem.js";
 import React from "react";
 import "./TodoList.css";
@@ -6,26 +5,19 @@ import "./TodoList.css";
 class TodoList extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      list: todo.list,
-    };
     this.removeTask = this.removeTask.bind(this);
   }
 
-  removeTask(id) {
-    this.setState({
-      list: this.state.list.filter((task) => task.id !== id),
-    });
+  removeTask(taskId) {
+    this.props.parentHandleRemove(taskId);
   }
 
   render() {
-    const { list } = this.state;
-    const { task } = this.props;
+    const { taskList } = this.props;
     return (
       <div>
-        <span>New task: {task}</span>
         <ul className="list">
-          {list.map((task, i) => (
+          {taskList.map((task, i) => (
             <TodoItem
               key={task.id}
               taskId={task.id}

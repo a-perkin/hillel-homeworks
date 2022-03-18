@@ -1,27 +1,27 @@
 module.exports = {
   list: [
     {
-      id: "14",
+      id: "1",
       title: "Сделать утреннюю зарядку",
       completed: true,
     },
     {
-      id: "16",
+      id: "2",
       title: "Купить продукты",
       completed: false,
     },
     {
-      id: "18",
+      id: "3",
       title: "Сделать домашнее задание",
       completed: false,
     },
     {
-      id: "19",
+      id: "4",
       title: "Сходить в кино",
       completed: true,
     },
     {
-      id: "20",
+      id: "5",
       title: "Позвонить другу",
       completed: false,
     },
