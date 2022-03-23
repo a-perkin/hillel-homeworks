@@ -29,6 +29,10 @@ export default class ContactTable extends React.Component {
     );
   }
 
+  // editContact(contact) {
+  //   this.props.passEditData(contact)
+  // }
+
   render() {
     const { contacts } = this.state;
     return (
@@ -39,6 +43,7 @@ export default class ContactTable extends React.Component {
             <th>Имя</th>
             <th>Фамилия</th>
             <th>Телефон</th>
+            <th>Редактировать</th>
             <th>Удалить</th>
           </tr>
         </thead>
@@ -49,6 +54,11 @@ export default class ContactTable extends React.Component {
               <td>{item.name}</td>
               <td>{item.sername}</td>
               <td>{item.phone}</td>
+              <th>
+                <button onClick={this.props.passEditData.bind(this, item)}>
+                  Редактировать
+                </button>
+              </th>
               <th>
                 <button onClick={() => this.deleteContact(item.id)}>
                   Удалить

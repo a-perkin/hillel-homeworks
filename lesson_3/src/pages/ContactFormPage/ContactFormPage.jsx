@@ -3,6 +3,12 @@ import ContactForm from "../../components/ContactForm/ContactForm";
 
 export default class ContactFormPage extends React.Component {
   render() {
-    return <ContactForm setPage={this.props.setPage} />;
+    return (
+      <ContactForm
+        setPage={this.props.setPage}
+        editData={this.props.editData}
+        resetEditData={this.props.resetEditData}
+      />
+    );
   }
 }

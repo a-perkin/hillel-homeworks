@@ -7,6 +7,7 @@ export default class ContactForm extends React.Component {
 
     this.state = {
       form: {
+        id: "",
         name: "",
         sername: "",
         phone: "",
@@ -17,13 +18,23 @@ export default class ContactForm extends React.Component {
     this.cancel = this.cancel.bind(this);
   }
 
+  componentDidMount() {
+    if (Object.keys(this.props.editData).length !== 0) {
+      this.setState({ form: this.props.editData });
+    }
+  }
+
   save(contact) {
-    const promise = API.setContact(contact);
-    promise.then(() => this.props.setPage("list"));
+    let promise = contact.id
+      ? API.updateContact(contact)
+      : API.setContact(contact);
+
+    promise.then(() => this.props.setPage("list"), this.props.resetEditData());
   }
 
   cancel() {
     this.props.setPage("list");
+    this.props.resetEditData();
   }
 
   handleChange(event) {
