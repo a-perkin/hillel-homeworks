@@ -1,26 +1,29 @@
 import React from "react";
 import API from "../../api/service";
 
-export default class ContactAddFormPage extends React.Component {
+export default class ContactForm extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-        form: {
-          name: "",
-          sername: "",
-          phone: "",
-        },
-      };
+      form: {
+        name: "",
+        sername: "",
+        phone: "",
+      },
+    };
 
     this.handleChange = this.handleChange.bind(this);
+    this.cancel = this.cancel.bind(this);
   }
 
-  
+  save(contact) {
+    const promise = API.setContact(contact);
+    promise.then(() => this.props.setPage("list"));
+  }
 
-  save(form) {
-    API.setContact(form).then(() => this.props.save());
-    console.log(form);
+  cancel() {
+    this.props.setPage("list");
   }
 
   handleChange(event) {
@@ -30,10 +33,6 @@ export default class ContactAddFormPage extends React.Component {
         [event.target.name]: event.target.value,
       },
     }));
-  }
-
-  componentDidMount() {
-    console.log("ContactAddFormPage");
   }
 
   render() {
@@ -51,7 +50,6 @@ export default class ContactAddFormPage extends React.Component {
               onChange={this.handleChange}
             />
           </label>
-
           <label>
             Фамилия:
             <input
@@ -61,7 +59,6 @@ export default class ContactAddFormPage extends React.Component {
               onChange={this.handleChange}
             />
           </label>
-
           <label>
             Телефон:
             <input
@@ -71,13 +68,12 @@ export default class ContactAddFormPage extends React.Component {
               onChange={this.handleChange}
             />
           </label>
-
           <input
             type="button"
             value="Сохранить"
             onClick={() => this.save(form)}
           />
-          <input type="button" value="Отмена" onClick={this.props.cancel} />
+          <input type="button" value="Отмена" onClick={this.cancel} />
         </form>
       </>
     );

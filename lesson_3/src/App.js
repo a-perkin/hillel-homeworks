@@ -1,45 +1,32 @@
 import React from "react";
-import ContactListPage from "./components/ContactListPage/ContactListPage";
-import ContactAddFormPage from "./components/ContactAddFormPage/ContactAddFormPage";
+import ContactListPage from "./pages/ContactListPage/ContactListPage";
+import ContactFormPage from "./pages/ContactFormPage/ContactFormPage";
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-    this.showAddContactForm = this.showAddContactForm.bind(this);
-    this.cancel = this.cancel.bind(this);
-    this.save = this.save.bind(this);
+    this.state = {
+      activePage: "",
+    };
+
+    this.setPage = this.setPage.bind(this);
   }
 
-  state = {
-    showForm: false,
-  };
-
-  save() {
-    this.setState({ showForm: false });
+  setPage(pageName) {
+    this.setState({ activePage: pageName });
   }
 
-  cancel() {
-    this.setState({ showForm: false });
-  }
-
-  showAddContactForm() {
-    this.setState({ showForm: true });
+  renderPage(page) {
+    switch (page) {
+      case "form":
+        return <ContactFormPage setPage={this.setPage}></ContactFormPage>;
+      default:
+        return <ContactListPage setPage={this.setPage}></ContactListPage>;
+    }
   }
 
   render() {
-    const showForm = this.state.showForm;
-    const contactAddFormPage = (
-      <ContactAddFormPage
-        save={this.save}
-        cancel={this.cancel}
-      ></ContactAddFormPage>
-    );
-    const contactListPage = (
-      <ContactListPage
-        showAddContactForm={this.showAddContactForm}
-      ></ContactListPage>
-    );
-
-    return <>{showForm ? contactAddFormPage : contactListPage}</>;
+    const { activePage } = this.state;
+    return this.renderPage(activePage);
   }
 }
